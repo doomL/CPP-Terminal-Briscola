@@ -350,11 +350,13 @@ int main()
                         if(cartaIniziale==false){
                           briscola=cartaBriscola(terra,cartaIniziale);
                            cout<<"-----------------------------------------"<<endl<<"La briscola e' il "<<briscola.valore<<" di "<<Semi[briscola.seme]<<endl;}}
-                            calcolaPresa(terra,carteUtente,carteIa,briscola,iniziale,numCarteUtente,numCarteIa);
-
+                         
                         stampaTerra(terra);
+        
+        calcolaPresa(terra,carteUtente,carteIa,briscola,iniziale,numCarteUtente,numCarteIa);
 
-
+ 
+ 
     }
     //if(numCarte=0)
     for(int i=0;i<numCarteUtente;i++)
