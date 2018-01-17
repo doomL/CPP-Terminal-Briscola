@@ -126,7 +126,9 @@ void giocaCartaIa(carta terra[], carta manoIa[],int &sceltaIa,carta mazzo[],int 
     if(iniziale==0)
     {
         for(int i=0;i<3;i++){
-            if(manoIa[i].seme==terra[0].seme&&manoIa[i].punteggio>terra[0].punteggio&&manoIa[i].valore!=cartaVuota.valore){
+             if(terra[0].punteggio==0&&manoIa[i].punteggio==0&&manoIa[i].seme!=briscola.seme)
+                sceltaIa=i;
+            else if(manoIa[i].seme==terra[0].seme&&manoIa[i].punteggio>terra[0].punteggio&&manoIa[i].valore!=cartaVuota.valore){
                 sceltaIa=i;
                 break;}
             else if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==0&&manoIa[i].valore!=cartaVuota.valore){
@@ -350,13 +352,12 @@ int main()
                         if(cartaIniziale==false){
                           briscola=cartaBriscola(terra,cartaIniziale);
                            cout<<"-----------------------------------------"<<endl<<"La briscola e' il "<<briscola.valore<<" di "<<Semi[briscola.seme]<<endl;}}
-                         
                         stampaTerra(terra);
-        
-        calcolaPresa(terra,carteUtente,carteIa,briscola,iniziale,numCarteUtente,numCarteIa);
 
- 
- 
+                            calcolaPresa(terra,carteUtente,carteIa,briscola,iniziale,numCarteUtente,numCarteIa);
+
+
+
     }
     //if(numCarte=0)
     for(int i=0;i<numCarteUtente;i++)
