@@ -125,36 +125,56 @@ void giocaCartaIa(carta terra[], carta manoIa[],int &sceltaIa,carta mazzo[],int 
     cartaVuota.seme=Bastoni;
     if(iniziale==0)
     {
-        for(int i=0;i<3;i++){
-             if(terra[0].punteggio==0&&manoIa[i].punteggio==0&&manoIa[i].seme!=briscola.seme)
-                sceltaIa=i;
-            else if(manoIa[i].seme==terra[0].seme&&manoIa[i].punteggio>terra[0].punteggio&&manoIa[i].valore!=cartaVuota.valore){
-                sceltaIa=i;
-                break;}
-            else if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==0&&manoIa[i].valore!=cartaVuota.valore){
-                sceltaIa=i;
-                break;}
-            else if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==2&&manoIa[i].valore!=cartaVuota.valore){
-                sceltaIa=i;
-                break;}
-            else if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==3&&manoIa[i].valore!=cartaVuota.valore){
-                sceltaIa=i;
-                break;}
-            else if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==4&&manoIa[i].valore!=cartaVuota.valore){
-                sceltaIa=i;
-                break;}
-            else
                 do
                     sceltaIa=rand()%3;
                 while(manoIa[sceltaIa].valore==0);
 
+                for(int i=0;i<3;i++)
+                    if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==4&&manoIa[i].valore!=cartaVuota.valore)
+                        sceltaIa=i;
+                for(int i=0;i<3;i++)
+                    if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==3&&manoIa[i].valore!=cartaVuota.valore)
+                        sceltaIa=i;
+                for(int i=0;i<3;i++)
+                    if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==2&&manoIa[i].valore!=cartaVuota.valore)
+                        sceltaIa=i;
+                for(int i=0;i<3;i++)
+                    if(terra[0].seme==briscola.seme&&manoIa[i].seme!=briscola.seme&&manoIa[i].punteggio==0&&manoIa[i].valore!=cartaVuota.valore)
+                        sceltaIa=i;
+                for(int i=0;i<3;i++)
+                    if(terra[0].punteggio==0&&manoIa[i].punteggio==0&&manoIa[i].seme!=briscola.seme&&manoIa[i].valore!=cartaVuota.valore)
+                        sceltaIa=i;
+                for(int i=0;i<3;i++)
+                    if(manoIa[i].seme==terra[0].seme&&manoIa[i].punteggio>terra[0].punteggio&&manoIa[i].valore!=cartaVuota.valore)
+                        sceltaIa=i;
+                for(int i=0;i<3;i++)
+                    if(manoIa[i].seme==terra[0].seme&&manoIa[i].punteggio>terra[0].punteggio&&terra[0].punteggio!=0&&manoIa[i].valore!=cartaVuota.valore)
+                        sceltaIa=i;
 
-        }
+
+
+
+
     }
-    else if(iniziale==1)
+    else if(iniziale==1){
         do
             sceltaIa=rand()%3;
         while(manoIa[sceltaIa].valore==0);
+
+        for(int i=0;i<3;i++)
+            if(manoIa[i].punteggio==4&&manoIa[i].seme!=briscola.seme&&manoIa[i].valore!=cartaVuota.valore)
+                sceltaIa=i;
+        for(int i=0;i<3;i++)
+            if(manoIa[i].punteggio==3&&manoIa[i].seme!=briscola.seme&&manoIa[i].valore!=cartaVuota.valore)
+                sceltaIa=i;
+        for(int i=0;i<3;i++)
+            if(manoIa[i].punteggio==2&&manoIa[i].seme!=briscola.seme&&manoIa[i].valore!=cartaVuota.valore)
+                sceltaIa=i;
+        for(int i=0;i<3;i++)
+            if(manoIa[i].punteggio==0&&manoIa[i].seme!=briscola.seme&&manoIa[i].valore!=cartaVuota.valore)
+                sceltaIa=i;
+
+    }
 
         if(numCarteRimaste<=0){
             terra[!iniziale]=manoIa[sceltaIa];
@@ -327,8 +347,8 @@ int main()
     }
     giocatoreIniziale(iniziale);
     //stampaMazzo(mazzo);
-    //stampaMano(manoIa);
     while(numCarteRimaste+6>0){
+            stampaMano(manoIa);
                         if(iniziale){
                             if(difficolta==1)
                                 giocaCartaIaRandom(terra,manoIa,sceltaIa,mazzo,numCarteRimaste);
